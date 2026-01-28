@@ -1,7 +1,4 @@
-/* ================================
-   DOM MANIPULATION – ALL IN ONE
-   Short Notes Included ✅
-================================ */
+
 
 /*
 DOM = Document Object Model
