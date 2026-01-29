@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOM Easy Notes</title>
+
+<style>
+  body {
+    font-family: Arial;
+    padding: 20px;
+  }
+  .box {
+    padding: 20px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+  }
+  .item {
+    padding: 10px;
+    border: 1px solid gray;
+  }
+  .highlight {
+    background: yellow;
+  }
+  .dark {
+    background: black;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="box" data-user="naveen" data-id="101">
+  Hello <b>Box</b>
+</div>
+
+<div class="item">Item Element</div>
+
+<script>
+
+/* =====================================================
+   DOM CONTENT, ATTRIBUTES, INSERTION & CLASSES
+   EASY SHORT NOTES
+===================================================== */
+
+/* ===============================
+   1. ACCESSING HTML CONTENT
+================================= */
+
+const box = document.querySelector(".box");
+
+/* ---------- innerHTML ---------- */
+// HTML + tags get/set karta hai
+console.log(box.innerHTML);
+box.innerHTML = "<b>Hello World</b>";
+
+/* NOTE:
+- Tags allow hote hain
+- Powerful but careful
+*/
+
+/* ---------- innerText ---------- */
+// Sirf visible text
+console.log(box.innerText);
+box.innerText = "Only Text";
+
+/* NOTE:
+- Hidden text include nahi hota
+*/
+
+/* ---------- outerHTML ---------- */
+// Element + content
+console.log(box.outerHTML);
+
+/* ---------- tagName & nodeName ---------- */
+console.log(box.tagName);   // DIV
+console.log(box.nodeName);  // DIV
+
+/* NOTE:
+- tagName → elements
+- nodeName → sab nodes
+*/
+
+/* ---------- textContent ---------- */
+// Saara text (hidden bhi)
+console.log(box.textContent);
+
+/* ===============================
+   2. ELEMENT VISIBILITY
+================================= */
+
+// box.hidden = true;   // hide
+// box.hidden = false;  // show
+
+/* NOTE:
+- hidden true → gayab
+*/
+
+/* ===============================
+   3. CHANGING CONTENT
+================================= */
+
+box.innerHTML = "Hey I am Naveen 😎";
+
+/* ===============================
+   4. WORKING WITH ATTRIBUTES
+================================= */
+
+console.log(box.hasAttribute("class"));     // true
+console.log(box.getAttribute("class"));     // box
+
+box.setAttribute("title", "This is a box");
+box.removeAttribute("title");
+
+console.log(box.attributes);
+
+/* NOTE:
+- attributes → saare attributes
+*/
+
+/* ===============================
+   5. document.designMode
+================================= */
+
+// document.designMode = "on";
+// document.designMode = "off";
+
+/* NOTE:
+- Page editable ho jata hai
+*/
+
+/* ===============================
+   6. CUSTOM DATA ATTRIBUTES
+================================= */
+
+console.log(box.dataset.user); // naveen
+console.log(box.dataset.id);   // 101
+
+/* NOTE:
+- data-* → custom info
+*/
+
+/* ===============================
+   7. ELEMENT INSERTION
+================================= */
+
+/* createElement */
+const newDiv = document.createElement("div");
+newDiv.innerText = "I am new div";
+
+/* append → end */
+document.body.append(newDiv);
+
+/* prepend → start */
+document.body.prepend(newDiv.cloneNode(true));
+
+/* before & after */
+box.before("Text Before Box");
+box.after("Text After Box");
+
+/* replaceWith */
+const replaceDiv = document.createElement("div");
+replaceDiv.innerText = "I replaced the box";
+box.replaceWith(replaceDiv);
+
+/* insertAdjacentHTML */
+replaceDiv.insertAdjacentHTML(
+  "beforeend",
+  "<p>Inserted using insertAdjacentHTML</p>"
+);
+
+/* ===============================
+   8. ELEMENT REMOVAL
+================================= */
+
+// replaceDiv.remove();
+
+/* NOTE:
+- remove() → delete
+*/
+
+/* ===============================
+   9. CLASS MANIPULATION
+================================= */
+
+const item = document.querySelector(".item");
+
+/* className */
+console.log(item.className);
+item.className = "item active";
+
+/* NOTE:
+- purani classes overwrite
+*/
+
+/* classList */
+item.classList.add("highlight");
+item.classList.remove("active");
+item.classList.toggle("dark");
+
+/* NOTE:
+- classList = best & safe
+*/
+
+
+
+
+</script>
+</body>
+</html>
