@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Callbacks & Promises Easy Notes</title>
+
+<style>
+  body {
+    font-family: Arial;
+    padding: 20px;
+  }
+  .box {
+    padding: 15px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Callbacks & Promises</h2>
+<div class="box" id="output">Open Console 👀</div>
+
+<script>
+
+/* =====================================================
+   1. ASYNCHRONOUS NATURE OF JS
+===================================================== */
+
+/*
+JavaScript async hai
+Matlab:
+- sab kaam wait nahi karta
+- heavy kaam side me bhej deta hai
+*/
+
+console.log("Start");
+
+setTimeout(() => {
+  console.log("This runs after 2 seconds");
+}, 2000);
+
+console.log("End");
+
+/*
+Output order:
+Start
+End
+(after 2 sec) This runs...
+*/
+
+/* =====================================================
+   2. CALLBACK FUNCTIONS
+===================================================== */
+
+/*
+Callback = function jo dusre function me pass hota hai
+Aur baad me call hota hai
+*/
+
+function loadScript(callback) {
+  console.log("Loading script...");
+  
+  setTimeout(() => {
+    console.log("Script loaded");
+    callback(); // callback call
+  }, 2000);
+}
+
+function afterLoad() {
+  console.log("Callback function executed");
+}
+
+loadScript(afterLoad);
+
+/*
+NOTE:
+- Function ko argument me pass kiya
+- Kaam complete hone ke baad call
+*/
+
+/* =====================================================
+   3. CALLBACK HELL (PYRAMID OF DOOM)
+===================================================== */
+
+function task1(cb) {
+  setTimeout(() => {
+    console.log("Task 1 done");
+    cb();
+  }, 1000);
+}
+
+function task2(cb) {
+  setTimeout(() => {
+    console.log("Task 2 done");
+    cb();
+  }, 1000);
+}
+
+function task3(cb) {
+  setTimeout(() => {
+    console.log("Task 3 done");
+    cb();
+  }, 1000);
+}
+
+task1(() => {
+  task2(() => {
+    task3(() => {
+      console.log("All tasks done 😵");
+    });
+  });
+});
+
+/*
+NOTE:
+- Zyada nesting
+- Code unreadable
+- Isi ko callback hell kehte hain
+*/
+
+/* =====================================================
+   4. INTRODUCTION TO PROMISES
+===================================================== */
+
+/*
+Promise = future ka wada
+Ya to:
+- resolve (success)
+- reject (fail)
+*/
+
+const promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  setTimeout(() => {
+    if (success) {
+      resolve("Promise resolved ✅");
+    } else {
+      reject("Promise rejected ❌");
+    }
+  }, 2000);
+});
+
+promise
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+/*
+NOTE:
+- then → success
+- catch → error
+*/
+
+/* =====================================================
+   5. PROMISE CHAINING
+===================================================== */
+
+const chainPromise = new Promise((resolve) => {
+  resolve(10);
+});
+
+chainPromise
+  .then(num => {
+    console.log(num);
+    return num * 2;
+  })
+  .then(num => {
+    console.log(num);
+    return num * 2;
+  })
+  .then(num => {
+    console.log("Final value:", num);
+  });
+
+/*
+NOTE:
+- return value next then me jata hai
+*/
+
+/* =====================================================
+   6. PROMISE API METHODS
+===================================================== */
+
+const p1 = new Promise(resolve => setTimeout(() => resolve("P1 done"), 1000));
+const p2 = new Promise(resolve => setTimeout(() => resolve("P2 done"), 2000));
+const p3 = new Promise((_, reject) => setTimeout(() => reject("P3 failed"), 1500));
+
+/* ---------- Promise.all ---------- */
+// Sab resolve hone chahiye
+Promise.all([p1, p2])
+  .then(result => console.log("Promise.all:", result))
+  .catch(err => console.log(err));
+
+/* ---------- Promise.allSettled ---------- */
+// Resolve ya reject dono ka result
+Promise.allSettled([p1, p3])
+  .then(result => console.log("Promise.allSettled:", result));
+
+/* ---------- Promise.race ---------- */
+// Jo pehle settle ho
+Promise.race([p1, p2])
+  .then(result => console.log("Promise.race:", result));
+
+/* ---------- Promise.any ---------- */
+// Pehla resolve
+Promise.any([p3, p1])
+  .then(result => console.log("Promise.any:", result));
+
+/* ---------- Promise.resolve & reject ---------- */
+
+Promise.resolve("Already resolved")
+  .then(res => console.log(res));
+
+Promise.reject("Already rejected")
+  .catch(err => console.log(err));
+
+/*
+Callbacks → old style
+Promises → better
+Async/await → best (next topic 🔥)
+*/
+</script>
+</body>
+</html>
