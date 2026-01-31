@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(1, 1, 1);
+    font-family: monospace;
+
+}
+.hacking{
+    margin: 200px;
+}
+
+.para {
+    color: green;
+    font-size: 20px;
+}
+  </style>
+</head>
+<body>
+    <div class="hacking">
+    <p class="para">Initializing Hacking </p>
+    <p class="para">Reading Your Files </p>
+    <p class="para">Password Files Deteacted</p>
+    <p class="para">Sending all Password and Personal files to sever </p>
+    <p class="para">Cleaning up </p>
+    </div>
+   
+</body>
+<script>
+    let hack = document.getElementsByClassName("hacking");
+let paras = document.getElementsByClassName("para");
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// sab pehle hide
+for (let p of paras) {
+    p.style.display = "none";
+}
+
+async function startHacking() {
+    for (let p of paras) {
+        p.style.display = "block";
+
+        // original text save
+        let text = p.innerText;
+        p.innerText = text;
+
+        // dots animation
+        for (let i = 0; i < 3; i++) {
+            p.innerText += ".";
+            await delay(500);
+        }
+
+        await delay(1000);
+    }
+}
+
+startHacking();
+
+</script>
+</html>
