@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Error Handling in JavaScript (Easy Notes)</title>
+
+<style>
+  body {
+    font-family: Arial;
+    padding: 20px;
+  }
+  .box {
+    border: 2px solid black;
+    padding: 15px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>JavaScript Error Handling (ONE FILE)</h2>
+
+<div class="box">Open Console 👀</div>
+
+<script>
+
+/* =====================================================
+   1. WHY ERROR HANDLING?
+===================================================== */
+
+/*
+Error handling is important because:
+- Program crash nahi hota
+- Aage ka code run hota rehta hai
+- User ko proper message milta hai
+*/
+
+/* =====================================================
+   2. PROMPT PROBLEM (TYPE COERCION)
+===================================================== */
+
+let a = prompt("Enter first number");
+let b = prompt("Enter second number");
+
+console.log(a + b);
+
+/*
+NOTE:
+- prompt() hamesha STRING deta hai
+- "2" + "3" = "23" ❌
+*/
+
+/* =====================================================
+   3. parseInt() FOR CORRECT ADDITION
+===================================================== */
+
+let num1 = parseInt(a);
+let num2 = parseInt(b);
+
+console.log("Correct sum:", num1 + num2);
+
+/*
+NOTE:
+- parseInt() string → number
+*/
+
+/* =====================================================
+   4. NaN PROBLEM
+===================================================== */
+
+let x = parseInt("abc");
+console.log(x);
+
+/*
+NOTE:
+- NaN = Not a Number
+- JS error throw nahi karta automatically
+*/
+
+/* =====================================================
+   5. THROWING CUSTOM ERROR
+===================================================== */
+
+if (isNaN(num1) || isNaN(num2)) {
+  throw new SyntaxError("Please enter valid numbers ❌");
+}
+
+/*
+NOTE:
+- isNaN() → check number valid hai ya nahi
+- throw → khud se error banana
+*/
+
+/* =====================================================
+   6. TRY...CATCH
+===================================================== */
+
+try {
+  let result = num1 + num2;
+  console.log("Result:", result);
+} catch (error) {
+  console.log("Error caught:", error.message);
+}
+
+/*
+NOTE:
+- try → risky code
+- catch → error handle
+- program rukta nahi
+*/
+
+/* =====================================================
+   7. REFERENCE ERROR EXAMPLE
+===================================================== */
+
+try {
+  console.log(notDefinedVariable);
+} catch (err) {
+  console.log("Reference Error handled");
+}
+
+/*
+NOTE:
+- bina try-catch → pura script stop
+*/
+
+/* =====================================================
+   8. FINALLY BLOCK
+===================================================== */
+
+try {
+  console.log("Try running");
+} catch (e) {
+  console.log("Catch running");
+} finally {
+  console.log("Finally always runs ✅");
+}
+
+/*
+NOTE:
+- error ho ya na ho
+- finally hamesha chalega
+*/
+
+/* =====================================================
+   9. FINALLY WITH RETURN (IMPORTANT)
+===================================================== */
+
+function testFinally() {
+  try {
+    return "Return from try";
+  } catch {
+    return "Return from catch";
+  } finally {
+    console.log("Finally runs even after return 🔥");
+  }
+}
+
+console.log(testFinally());
+
+/*
+INTERVIEW NOTE:
+- return ke baad bhi finally run hota hai
+*/
+
+/* =====================================================
+   10. ERROR TYPES (SHORT NOTES)
+===================================================== */
+
+/*
+SyntaxError  → syntax galat
+TypeError    → wrong type
+ReferenceError → variable not found
+Error        → generic error
+*/
+
+/* =====================================================
+   FINAL RULE
+===================================================== */
+
+/*
+JS bohot forgiving hai 😴
+Isliye:
+- validate karo
+- error throw karo
+- try-catch use karo
+
+
+*/
+
+</script>
+</body>
+</html>
