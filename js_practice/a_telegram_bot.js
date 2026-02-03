@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // Apna token yahan daalo
-const token = "8208036224:AAEIsd9qeELHTZfWFV_7kdgHOfJ3IdLL8Os";
+const token = ""; //8208036224:AAEIsd9qeELHTZfWFV_7kdgHOfJ3IdLL8Os
 
 // Bot create with polling
 const bot = new TelegramBot(token, { polling: true });
