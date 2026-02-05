@@ -1,22 +1,16 @@
 // ******************Number guessing program************
-let guessing = Number(prompt("give me a no. :-"))
+let guessing = Number(prompt("Guess a number (0-9):"));
+
 if (isNaN(guessing)) {
-    console.log("this is not a number ");
-} else if (guessing === 7) {
-    console.log("welldone your guess is to right ");
-} else if (guessing < 7) {
-    console.log("your no. is just smaller bro ");
+    console.log("Not a number!");
+} else {
+    let randomNumber = getRandom(10);
 
-} else if (guessing > 7) {
-    console.log("your no. is just bigger ");
-
+    if (guessing === randomNumber) {
+        console.log("🎉 Correct Guess!");
+    } else {
+        console.log("❌ Wrong! Number was:", randomNumber);
+    }
 }
-
-else {
-    console.log("you are from another world");
-}
-
-
-
 
 
