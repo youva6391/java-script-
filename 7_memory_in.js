@@ -26,7 +26,7 @@ userTwo.email = "abhishek23456@gmail.com" // it is a way call it any variable wh
 console.log(userOne.email);
 console.log(userTwo.email);
 
-// this information won'nt let you understand completely so research on it and use documentation on "ecma script" or "mdn"
+// this information won'nt let you understand completely. so research on it and use documentation on "ecma script" or "mdn"
 
 
 
