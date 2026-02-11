@@ -18,7 +18,7 @@ console.log(id);
 let account_state; // the vale is undifined in js if you did'nt assign any thing to variable it taken as a undifined value 
 console.table(id,email,password, account_city);
 
-// ajj ke liye itna hi meet you in next code 
+// ajj ke liye itna hi meet you in next code. 
 
 
 
