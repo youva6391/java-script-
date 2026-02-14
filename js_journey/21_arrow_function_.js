@@ -61,5 +61,5 @@ console.log(addtow(3,4)); // output : 7
 
 // ************Important point about arrow function and this keyword************
 
-// 1. arrow function do not have their own this keyword
+// 1. arrow function do not have their own this keyword.
 // 2. arrow function this keyword reffers to the this keyword of the surrounding lexical context    
