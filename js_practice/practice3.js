@@ -1,4 +1,4 @@
-// ++++++++++++++ A GRADE CALCULATOR ++++++++++++++
+// ++++++++++++++ A SIMPLE GRADE CALCULATOR ++++++++++++++
 let marks = 50
 if (marks == 90) {
    console.log("A++");
