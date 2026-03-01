@@ -1,4 +1,4 @@
-// this function: reffers the current context
+// this function: reffers the current context.
 
 const { use } = require("react");
 
