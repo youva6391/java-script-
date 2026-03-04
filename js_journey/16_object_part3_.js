@@ -25,7 +25,7 @@ console.log(instructor); // both output is same :
 
 //{             // its a json
 //    "name":"naveen",
-//    "coursename" : "bs in hindi",; // some part of json
+//    "coursename" : "bs in hindi",; // some part of json.
 //    "price":"free";
 
 //}
