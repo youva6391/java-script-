@@ -11,7 +11,7 @@ for (const key in myObject) {
 }
 
                          
-const programming = ["js", "rb", "py", "java", "cpp"]  // for...in on arrays gives indices (not recommended - use for...of instead)
+const programming = ["js", "rb", "py", "java", "cpp","c++"]  // for...in on arrays gives indices (not recommended - use for...of instead)
 
 for (const key in programming) {
     //console.log(programming[key]);
